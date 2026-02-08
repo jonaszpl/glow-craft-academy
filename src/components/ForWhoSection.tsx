@@ -1,225 +1,191 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Users, Lightbulb, Cpu, Briefcase, Check, GraduationCap, Video, Award, UserCheck } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Zap, Bot, FileCheck, Workflow, Package, Clock, TrendingUp, ListChecks, Check } from "lucide-react";
 
 const tabs = [
-  { id: "wszystko", label: "Wszystko", icon: Users },
-  { id: "mindset", label: "Mindset", icon: Lightbulb },
-  { id: "tech", label: "Tech", icon: Cpu },
-  { id: "business", label: "Business", icon: Briefcase },
+  { id: "dla-kogo", label: "Dla kogo" },
+  { id: "jak-pracujemy", label: "Jak pracujemy" },
+  { id: "efekty", label: "Efekty" },
 ];
 
 const contentData = {
-  wszystko: {
-    title: "Dla kogo jest szkolenie?",
-    description: "Nasze szkolenia są idealne zarówno dla osób indywidualnych, jak i dla firm, które chcą rozwijać kompetencje cyfrowe swojego zespołu.",
+  "dla-kogo": {
+    badge: "Poznaj nas od kuchni",
+    title: "Dla kogo jest szkolenie",
+    subtitle: "To jest dla firm, które:",
     items: [
       {
-        icon: Users,
-        title: "Osoby indywidualne",
-        description: "Chcące rozwinąć umiejętności cyfrowe lub zmienić zawód",
+        icon: Zap,
+        title: "Chaos w procesach",
+        description: "mają chaos w marketingu/sprzedaży i chcą procesu, nie tipów",
       },
       {
-        icon: Briefcase,
-        title: "JDG i przedsiębiorcy",
-        description: "Szukający narzędzi do automatyzacji i rozwoju biznesu",
+        icon: Bot,
+        title: "Wdrożenie AI",
+        description: "chcą wdrożyć AI bez zatrudniania nowego zespołu",
       },
       {
-        icon: UserCheck,
-        title: "Działy Marketing & Sales",
-        description: "Chcące wykorzystać AI w codziennej pracy",
+        icon: FileCheck,
+        title: "Dotacje bez stresu",
+        description: "chcą wykorzystać środki z dotacji, ale nie mają czasu na formalności",
       },
-      {
-        icon: GraduationCap,
-        title: "Do 100% dofinansowania",
-        description: "Dla firm i osób fizycznych z różnych programów UE",
-      },
-    ],
-    benefits: [
-      "Szkolenia online i na żywo",
-      "20% teorii, 80% praktyki",
-      "Certyfikat ukończenia",
-      "Mentoring i wsparcie",
     ],
   },
-  mindset: {
-    title: "Mindset & Rozwój osobisty",
-    description: "Rozwijaj umiejętności miękkie i nastawienie na sukces w świecie cyfrowym.",
+  "jak-pracujemy": {
+    badge: "80% praktyki",
+    title: "Jak pracujemy",
+    subtitle: "Nie robimy szkolenia pod slajdy. Pracujemy na Twoich przypadkach:",
     items: [
       {
-        icon: Lightbulb,
-        title: "Growth Mindset",
-        description: "Nauka adaptacji do zmian i ciągłego rozwoju",
+        icon: Workflow,
+        title: "Twoje case'y",
+        description: "lead → follow-up → pipeline → automatyzacje → raport",
       },
       {
-        icon: Users,
-        title: "Liderstwo",
-        description: "Budowanie zespołów i zarządzanie w erze AI",
+        icon: Package,
+        title: "Pakiet wdrożeniowy",
+        description: "Po warsztacie dostajesz: checklisty, szablony, gotowe automaty",
       },
-    ],
-    benefits: [
-      "Coaching grupowy",
-      "Warsztaty praktyczne",
-      "Społeczność absolwentów",
-      "Materiały dodatkowe",
     ],
   },
-  tech: {
-    title: "Tech & AI",
-    description: "Opanuj narzędzia AI i automatyzacji, które zmienią Twoją pracę.",
+  "efekty": {
+    badge: "Po tygodniu",
+    title: "Czego możesz się spodziewać",
+    subtitle: "Po tygodniu od wdrożenia:",
     items: [
       {
-        icon: Cpu,
-        title: "ChatGPT & AI Assistants",
-        description: "Tworzenie promptów i integracja AI w workflow",
+        icon: Clock,
+        title: "Mniej ręcznej roboty",
+        description: "powtarzalne rzeczy robi system",
       },
       {
-        icon: Video,
-        title: "Automatyzacje",
-        description: "Make, n8n, Zapier - automatyzuj powtarzalne zadania",
-      },
-    ],
-    benefits: [
-      "Dostęp do narzędzi AI",
-      "Projekty praktyczne",
-      "Certyfikacja techniczna",
-      "Wsparcie ekspertów",
-    ],
-  },
-  business: {
-    title: "Business & Sprzedaż",
-    description: "Strategie marketingowe i sprzedażowe z wykorzystaniem nowoczesnych technologii.",
-    items: [
-      {
-        icon: Briefcase,
-        title: "Digital Marketing",
-        description: "Meta Ads, Google Ads, Content Marketing",
+        icon: TrendingUp,
+        title: "Lepsza jakość leadów",
+        description: "szybszy follow-up i konwersja",
       },
       {
-        icon: Award,
-        title: "Sales Automation",
-        description: "CRM, Social Selling, Prospecting",
+        icon: ListChecks,
+        title: "Jasny proces",
+        description: "zespół wie co jest następne (pipeline + odpowiedzialności)",
       },
-    ],
-    benefits: [
-      "Case studies",
-      "Analizy kampanii",
-      "Szablony dokumentów",
-      "Networking",
     ],
   },
 };
 
+const rightBoxBenefits = [
+  "Dostęp do narzędzi AI",
+  "Projekty praktyczne",
+  "Certyfikacja techniczna",
+  "Wsparcie ekspertów",
+];
+
 export const ForWhoSection = () => {
-  const [activeTab, setActiveTab] = useState("wszystko");
+  const [activeTab, setActiveTab] = useState("dla-kogo");
   const content = contentData[activeTab as keyof typeof contentData];
 
   return (
-    <section id="dla-kogo" className="section-padding relative">
-      {/* Background accent */}
-      <div className="absolute top-1/2 left-0 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl" />
-      
-      <div className="container mx-auto relative z-10">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-4">
-            Poznaj nas od kuchni
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Dla <span className="text-gradient">kogo</span> jest szkolenie?
-          </h2>
-        </motion.div>
-
-        {/* Tabs */}
+    <section id="dla-kogo" className="section-padding bg-muted">
+      <div className="container mx-auto">
+        {/* Tab navigation */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`relative px-6 py-3 text-sm font-medium transition-all duration-300 rounded-full ${
                 activeTab === tab.id
                   ? "bg-primary text-primary-foreground shadow-lg"
-                  : "bg-white/5 text-muted-foreground hover:bg-white/10 hover:text-foreground"
+                  : "bg-card text-muted-foreground hover:text-foreground hover:bg-card/80 border border-border"
               }`}
             >
-              <tab.icon className="w-4 h-4" />
               {tab.label}
             </button>
           ))}
         </div>
 
-        {/* Content */}
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="glass rounded-3xl p-8 md:p-12"
-        >
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Left - Items */}
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">{content.title}</h3>
-              <p className="text-muted-foreground mb-8">{content.description}</p>
-              
-              <div className="grid sm:grid-cols-2 gap-6">
+        {/* Main content */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Left column - Dynamic content */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
+              {/* Badge */}
+              <span className="inline-block px-4 py-2 rounded-full bg-secondary/20 text-secondary text-sm font-medium border border-secondary/30">
+                {content.badge}
+              </span>
+
+              {/* Heading */}
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary">
+                {content.title}
+              </h2>
+
+              {/* Subtitle */}
+              <p className="text-lg text-muted-foreground">{content.subtitle}</p>
+
+              {/* Feature cards */}
+              <div className="space-y-4 pt-4">
                 {content.items.map((item, index) => (
                   <motion.div
                     key={item.title}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="group"
+                    className="flex gap-4 p-5 bg-card rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center flex-shrink-0">
                       <item.icon className="w-6 h-6 text-primary-foreground" />
                     </div>
-                    <h4 className="font-semibold mb-2">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Right column - Fixed dark box */}
+          <div className="bg-background rounded-2xl p-8 lg:p-10 text-foreground h-fit border border-border">
+            <h4 className="text-xl font-bold mb-8">Jak działają szkolenia?</h4>
+            
+            <div className="space-y-5">
+              {rightBoxBenefits.map((benefit, index) => (
+                <motion.div
+                  key={benefit}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center gap-4"
+                >
+                  <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                    <Check className="w-4 h-4 text-secondary" />
+                  </div>
+                  <span className="text-muted-foreground">{benefit}</span>
+                </motion.div>
+              ))}
             </div>
 
-            {/* Right - Benefits */}
-            <div className="bg-white/5 rounded-2xl p-8">
-              <h4 className="text-xl font-bold mb-6">Jak działają szkolenia?</h4>
-              <div className="space-y-4">
-                {content.benefits.map((benefit, index) => (
-                  <motion.div
-                    key={benefit}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
-                    className="flex items-center gap-4"
-                  >
-                    <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
-                      <Check className="w-4 h-4 text-secondary" />
-                    </div>
-                    <span>{benefit}</span>
-                  </motion.div>
-                ))}
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-4 mt-10 pt-8 border-t border-border">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-primary">20%</div>
+                <div className="text-sm text-muted-foreground mt-1">Teorii</div>
               </div>
-
-              {/* Stats */}
-              <div className="grid grid-cols-2 gap-4 mt-8 pt-8 border-t border-white/10">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">20%</div>
-                  <div className="text-sm text-muted-foreground">Teorii</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-secondary">80%</div>
-                  <div className="text-sm text-muted-foreground">Praktyki</div>
-                </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-secondary">80%</div>
+                <div className="text-sm text-muted-foreground mt-1">Praktyki</div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
