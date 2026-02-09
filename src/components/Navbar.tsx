@@ -33,11 +33,12 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">AI</span>
-          </div>
-          <span className="text-xl font-bold text-foreground">Szkolenia</span>
+        <a href="#" className="flex items-center">
+          <img 
+            src="/assets/logo.webp" 
+            alt="Content Media - Where IT meets marketing" 
+            className="h-12 w-auto"
+          />
         </a>
 
         {/* Desktop Navigation */}
