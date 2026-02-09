@@ -84,7 +84,7 @@ export const ForWhoSection = () => {
   const content = contentData[activeTab as keyof typeof contentData];
 
   return (
-    <section id="dla-kogo" className="section-padding bg-muted">
+    <section id="dla-kogo" className="section-padding bg-[#F8F9FA]">
       <div className="container mx-auto">
         {/* Tab navigation */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
@@ -94,8 +94,8 @@ export const ForWhoSection = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`relative px-6 py-3 text-sm font-medium transition-all duration-300 rounded-full ${
                 activeTab === tab.id
-                  ? "bg-primary text-primary-foreground shadow-lg"
-                  : "bg-card text-muted-foreground hover:text-foreground hover:bg-card/80 border border-border"
+                  ? "bg-primary text-white shadow-lg"
+                  : "bg-transparent text-gray-700 hover:text-gray-900 border border-gray-300 hover:border-gray-400"
               }`}
             >
               {tab.label}
@@ -126,7 +126,7 @@ export const ForWhoSection = () => {
               </h2>
 
               {/* Subtitle */}
-              <p className="text-lg text-muted-foreground">{content.subtitle}</p>
+              <p className="text-lg text-gray-600">{content.subtitle}</p>
 
               {/* Feature cards */}
               <div className="space-y-4 pt-4">
@@ -136,14 +136,14 @@ export const ForWhoSection = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex gap-4 p-5 bg-card rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow duration-300"
+                    className="flex gap-4 p-5 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow duration-300"
                   >
                     <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center flex-shrink-0">
-                      <item.icon className="w-6 h-6 text-primary-foreground" />
+                      <item.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                      <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
+                      <p className="text-sm text-gray-600">{item.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -153,7 +153,7 @@ export const ForWhoSection = () => {
 
           {/* Right column - Fixed dark box */}
           <div className="bg-background rounded-2xl p-8 lg:p-10 text-foreground h-fit border border-border">
-            <h4 className="text-xl font-bold mb-8">Jak działają szkolenia?</h4>
+            <h4 className="text-xl font-bold mb-8 text-white">Jak działają szkolenia?</h4>
             
             <div className="space-y-5">
               {rightBoxBenefits.map((benefit, index) => (
@@ -168,7 +168,7 @@ export const ForWhoSection = () => {
                   <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
                     <Check className="w-4 h-4 text-secondary" />
                   </div>
-                  <span className="text-muted-foreground">{benefit}</span>
+                  <span className="text-gray-300">{benefit}</span>
                 </motion.div>
               ))}
             </div>
@@ -177,11 +177,11 @@ export const ForWhoSection = () => {
             <div className="grid grid-cols-2 gap-4 mt-10 pt-8 border-t border-border">
               <div className="text-center">
                 <div className="text-4xl font-bold text-primary">20%</div>
-                <div className="text-sm text-muted-foreground mt-1">Teorii</div>
+                <div className="text-sm text-gray-400 mt-1">Teorii</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl font-bold text-secondary">80%</div>
-                <div className="text-sm text-muted-foreground mt-1">Praktyki</div>
+                <div className="text-sm text-gray-400 mt-1">Praktyki</div>
               </div>
             </div>
           </div>
