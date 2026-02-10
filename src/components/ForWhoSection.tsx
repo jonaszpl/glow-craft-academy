@@ -1,225 +1,153 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Zap, Bot, FileCheck, Workflow, Package, Clock, TrendingUp, ListChecks, Check, HeadphonesIcon } from "lucide-react";
+import { User, Target, Star, MessageCircle, Check } from "lucide-react";
+
+import tabLearning from "@/assets/tab-learning.webp";
+import tabWorkshop from "@/assets/tab-workshop.webp";
+import tabTeam from "@/assets/tab-team.webp";
+import tabSupport from "@/assets/tab-support.webp";
 
 const tabs = [
-  { id: "dla-kogo", label: "Dla kogo" },
-  { id: "jak-pracujemy", label: "Jak pracujemy" },
-  { id: "efekty", label: "Efekty" },
+  { id: "system", label: "Wygodny system do nauki", icon: User },
+  { id: "zajecia", label: "Interaktywne zajęcia", icon: Target },
+  { id: "zespol", label: "Profesjonalny zespół", icon: Star },
+  { id: "wsparcie", label: "Wsparcie i motywacja", icon: MessageCircle },
 ];
 
 const contentData = {
-  "dla-kogo": {
-    subtitle: "To jest dla firm, które:",
-    items: [
-      {
-        icon: Zap,
-        title: "Chaos w procesach",
-        description: "mają chaos w marketingu/sprzedaży i chcą procesu, nie tipów",
-      },
-      {
-        icon: Bot,
-        title: "Wdrożenie AI",
-        description: "chcą wdrożyć AI bez zatrudniania nowego zespołu",
-      },
-      {
-        icon: FileCheck,
-        title: "Dotacje bez stresu",
-        description: "chcą wykorzystać środki z dotacji, ale nie mają czasu na formalności",
-      },
+  system: {
+    image: tabLearning,
+    heading: "Wszystkie Twoje kursy w jednym miejscu",
+    description:
+      "Aby Twoja nauka przebiegała komfortowo i wydajnie, stworzyliśmy własny system do nauki online. Dzięki kontu My.Laba wszystkie materiały, zajęcia i zadania domowe masz zawsze pod ręką.",
+    bullets: [
+      "Dostęp 24/7 do platformy kursowej",
+      "Materiały video, prezentacje i ćwiczenia praktyczne",
+      "Śledzenie postępów w nauce",
+      "Bezpośredni kontakt z wykładowcą",
     ],
-    rightBox: {
-      title: "Dla kogo to szkolenie?",
-      benefits: [
-        "Firmy z chaosem w marketingu/sprzedaży",
-        "Zespoły chcące wdrożyć AI",
-        "Firmy szukające dotacji",
-        "JDG i przedsiębiorcy",
-      ],
-    },
   },
-  "jak-pracujemy": {
-    subtitle: "Nie robimy szkolenia pod slajdy. Pracujemy na Twoich przypadkach:",
-    items: [
-      {
-        icon: Workflow,
-        title: "Twoje case'y w praktyce",
-        description: "lead → follow-up → pipeline → automatyzacje → raport",
-      },
-      {
-        icon: Package,
-        title: "Pakiet wdrożeniowy",
-        description: "Po warsztacie dostajesz: checklisty, szablony, gotowe automaty",
-      },
-      {
-        icon: HeadphonesIcon,
-        title: "Wsparcie po szkoleniu",
-        description: "Mentoring i pomoc we wdrożeniu rozwiązań",
-      },
+  zajecia: {
+    image: tabWorkshop,
+    heading: "80% praktyki, nie teorii",
+    description:
+      'Nie robimy szkolenia „pod slajdy". Pracujemy na Twoich przypadkach: lead → follow-up → pipeline → automatyzacje → raport.',
+    bullets: [
+      "Warsztaty na żywo i online",
+      "Praca na realnych case'ach z Twojej firmy",
+      "Checklisty i szablony do wdrożenia",
+      "Gotowe automaty po szkoleniu",
     ],
-    rightBox: {
-      title: "Jak działają szkolenia?",
-      benefits: [
-        "Szkolenia online i na żywo",
-        "20% teorii, 80% praktyki",
-        "Certyfikat ukończenia",
-        "Mentoring i wsparcie",
-      ],
-    },
   },
-  "efekty": {
-    subtitle: "Po tygodniu od wdrożenia:",
-    items: [
-      {
-        icon: Clock,
-        title: "Mniej ręcznej roboty",
-        description: "powtarzalne rzeczy robi system",
-      },
-      {
-        icon: TrendingUp,
-        title: "Lepsza jakość leadów",
-        description: "szybszy follow-up i konwersja",
-      },
-      {
-        icon: ListChecks,
-        title: "Jasny proces",
-        description: "zespół wie co jest następne (pipeline + odpowiedzialności)",
-      },
+  zespol: {
+    image: tabTeam,
+    heading: "Eksperci-praktycy, nie tylko trenerzy",
+    description:
+      "Nasi wykładowcy to specjaliści, którzy na co dzień wdrażają AI i automatyzacje w firmach. Nie uczą teorii — pokazują co działa.",
+    bullets: [
+      "Doświadczenie w AI, marketingu i sprzedaży",
+      "Certyfikowani trenerzy",
+      "Portfolio realnych wdrożeń",
+      "Indywidualne podejście do uczestników",
     ],
-    rightBox: {
-      title: "Czego możesz się spodziewać?",
-      benefits: [
-        "Automatyzacja powtarzalnych zadań",
-        "Szybszy follow-up leadów",
-        "Przejrzysty pipeline sprzedaży",
-        "Zespół wie co robić",
-      ],
-    },
+  },
+  wsparcie: {
+    image: tabSupport,
+    heading: "Nie zostaniesz sam po szkoleniu",
+    description:
+      "Mentoring i wsparcie po szkoleniu to standard. Pomagamy wdrożyć rozwiązania w Twojej firmie i odpowiadamy na pytania.",
+    bullets: [
+      "Mentoring po zakończeniu kursu",
+      "Grupa wsparcia absolwentów",
+      "Materiały dodatkowe i aktualizacje",
+      "Pomoc we wdrożeniu narzędzi",
+    ],
   },
 };
 
 export const ForWhoSection = () => {
-  const [activeTab, setActiveTab] = useState("dla-kogo");
+  const [activeTab, setActiveTab] = useState("system");
   const content = contentData[activeTab as keyof typeof contentData];
 
   return (
     <section id="dla-kogo" className="section-padding bg-[#F8F9FA]">
       <div className="container mx-auto">
-        {/* Section Header - Outside Frame */}
-        <div className="text-center mb-8">
-          {/* Badge */}
-          <span className="inline-block px-4 py-2 rounded-full bg-secondary/20 text-secondary text-sm font-medium border border-secondary/30 mb-6">
+        {/* Section Header */}
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-10">
             Poznaj nas od kuchni
-          </span>
-
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-8">
-            Dla kogo jest szkolenie?
           </h2>
 
-          {/* Tab navigation */}
-          <div className="flex flex-wrap justify-center gap-2">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`relative px-6 py-3 text-sm font-medium transition-all duration-300 rounded-full ${
-                  activeTab === tab.id
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "bg-transparent text-gray-700 hover:text-gray-900 border border-gray-300 hover:border-gray-400"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+          {/* Tab navigation with icons */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-2 px-4 md:px-6 py-3 text-sm font-medium transition-all duration-300 rounded-full ${
+                    isActive
+                      ? "bg-primary text-primary-foreground shadow-lg"
+                      : "bg-transparent text-gray-600 hover:text-gray-900 border border-gray-300 hover:border-gray-400"
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span className="hidden sm:inline">{tab.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Framed Container */}
-        <div className="bg-card rounded-3xl shadow-xl border border-border overflow-hidden">
-          <div className="grid lg:grid-cols-5 gap-0">
-            {/* Left column - Dynamic content (60%) */}
-            <div className="lg:col-span-3 p-8 lg:p-10">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-6"
-                >
-                  {/* Subtitle */}
-                  <p className="text-lg text-muted-foreground font-medium">{content.subtitle}</p>
+        {/* Content Container */}
+        <div className="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="grid md:grid-cols-5 gap-0"
+            >
+              {/* Left - Image (40%) */}
+              <div className="md:col-span-2 p-6 md:p-10 flex items-center justify-center bg-gray-50">
+                <img
+                  src={content.image}
+                  alt={content.heading}
+                  className="w-full max-w-md rounded-2xl object-cover"
+                />
+              </div>
 
-                  {/* Feature cards */}
-                  <div className="space-y-4">
-                    {content.items.map((item, index) => (
-                      <motion.div
-                        key={item.title}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="flex gap-4 p-5 bg-muted rounded-2xl border border-border hover:shadow-md transition-shadow duration-300"
-                      >
-                        <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center flex-shrink-0">
-                          <item.icon className="w-6 h-6 text-primary-foreground" />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
-                          <p className="text-sm text-muted-foreground">{item.description}</p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Right column - Dynamic dark box (40%) */}
-            <div className="lg:col-span-2 bg-background p-8 lg:p-10 text-foreground">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab + "-right"}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <h4 className="text-xl font-bold mb-8 text-foreground">{content.rightBox.title}</h4>
-                  
-                  <div className="space-y-5">
-                    {content.rightBox.benefits.map((benefit, index) => (
-                      <motion.div
-                        key={benefit}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="flex items-center gap-4"
-                      >
-                        <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
-                          <Check className="w-4 h-4 text-secondary" />
-                        </div>
-                        <span className="text-muted-foreground">{benefit}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* Stats */}
-                  <div className="grid grid-cols-2 gap-4 mt-10 pt-8 border-t border-border">
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-primary">20%</div>
-                      <div className="text-sm text-muted-foreground mt-1">Teorii</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-secondary">80%</div>
-                      <div className="text-sm text-muted-foreground mt-1">Praktyki</div>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
+              {/* Right - Text (60%) */}
+              <div className="md:col-span-3 p-8 md:p-12 flex flex-col justify-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+                  {content.heading}
+                </h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {content.description}
+                </p>
+                <ul className="space-y-3">
+                  {content.bullets.map((bullet, i) => (
+                    <motion.li
+                      key={bullet}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex items-start gap-3"
+                    >
+                      <div className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3.5 h-3.5 text-secondary" />
+                      </div>
+                      <span className="text-gray-700">{bullet}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>
