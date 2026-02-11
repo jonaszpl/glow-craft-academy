@@ -43,21 +43,25 @@ export const Footer = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                Dowiedz się więcej
+                Porozmawiajmy o Twoim szkoleniu
               </h3>
               <p className="text-muted-foreground">
-                Zapisz się do newslettera i otrzymuj najnowsze informacje o szkoleniach, 
-                promocjach i darmowych materiałach.
+                Zostaw kontakt — oddzwonimy i sprawdzimy, czy Twoja firma kwalifikuje się do dofinansowania.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col gap-4">
               <input
-                type="email"
-                placeholder="Twój email"
-                className="input-glass flex-1"
+                type="text"
+                placeholder="Imię"
+                className="input-glass"
+              />
+              <input
+                type="tel"
+                placeholder="+48 XXX XXX XXX"
+                className="input-glass"
               />
               <Button variant="hero" size="lg">
-                Zapisz się
+                Oddzwońcie do mnie
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
