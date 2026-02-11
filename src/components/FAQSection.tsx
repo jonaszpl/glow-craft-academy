@@ -36,7 +36,7 @@ export const FAQSection = () => {
         once: true
       }} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary-foreground">
-            Często zadawane <span className="text-gradient">pytania</span>
+            Często zadawane <span className="text-gradient text-secondary-foreground">pytania</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Znajdź odpowiedzi na najczęściej zadawane pytania
@@ -53,7 +53,7 @@ export const FAQSection = () => {
       }} viewport={{
         once: true
       }}>
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-4 text-muted bg-muted pl-[12px] px-[20px] py-[20px] rounded-2xl">
             {faqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`} className="glass rounded-xl px-6 border-0 data-[state=open]:bg-white/10">
                 <AccordionTrigger className="text-left hover:no-underline py-6 text-lg font-medium">
                   {faq.question}
