@@ -36,7 +36,7 @@ export const FAQSection = () => {
         once: true
       }} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary-foreground">
-            Często zadawane <span className="text-gradient text-secondary-foreground">pytania</span>
+            Często zadawane <span className="text-secondary-foreground">pytania</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Znajdź odpowiedzi na najczęściej zadawane pytania
