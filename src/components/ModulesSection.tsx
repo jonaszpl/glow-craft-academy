@@ -42,22 +42,22 @@ const pillars = [
 
 const courseStructure = [
   {
-    pillar: "Pilar 1 - Marketing",
+    pillar: "Filar 1 - Marketing",
     items: ["Performance Marketing", "Content Marketing", "Funnels & Automation"],
     icon: Megaphone,
   },
   {
-    pillar: "Pilar 2 - AI w biznesie",
+    pillar: "Filar 2 - AI w biznesie",
     items: ["AI Assistants", "Prompt Engineering", "Content Generation", "Analytics AI"],
     icon: Bot,
   },
   {
-    pillar: "Pilar 3 - Automatyzacje",
+    pillar: "Filar 3 - Automatyzacje",
     items: ["Make / n8n", "CRM Integrations", "Voice & Chat Bots"],
     icon: Zap,
   },
   {
-    pillar: "Pilar 4 - System dowodów",
+    pillar: "Filar 4 - System dowodów",
     items: ["KPI Dashboard", "Team Workflow", "Reporting"],
     icon: BarChart3,
   },
