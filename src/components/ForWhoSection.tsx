@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, Target, Star, MessageCircle, Check } from "lucide-react";
+import { User, Target, Star, Check } from "lucide-react";
 
 import tabLearning from "@/assets/tab-learning.webp";
 import tabWorkshop from "@/assets/tab-workshop.webp";
@@ -8,65 +8,43 @@ import tabTeam from "@/assets/tab-team.webp";
 import tabSupport from "@/assets/tab-support.webp";
 
 const tabs = [
-  { id: "system", label: "Wygodny system do nauki", icon: User },
-  { id: "zajecia", label: "Interaktywne zajęcia", icon: Target },
-  { id: "zespol", label: "Profesjonalny zespół", icon: Star },
-  { id: "wsparcie", label: "Wsparcie i motywacja", icon: MessageCircle },
+  { id: "dlakogo", label: "Dla kogo jest szkolenie", icon: User },
+  { id: "jakpracujemy", label: "Jak pracujemy", icon: Target },
+  { id: "czego", label: "Czego możesz się spodziewać", icon: Star },
 ];
 
 const contentData = {
-  system: {
+  dlakogo: {
     image: tabLearning,
-    heading: "Wszystkie Twoje kursy w jednym miejscu",
-    description:
-      "Aby Twoja nauka przebiegała komfortowo i wydajnie, stworzyliśmy własny system do nauki online. Dzięki kontu My.Laba wszystkie materiały, zajęcia i zadania domowe masz zawsze pod ręką.",
+    heading: "Dla kogo jest szkolenie",
+    description: "To jest dla firm, które:",
     bullets: [
-      "Dostęp 24/7 do platformy kursowej",
-      "Materiały video, prezentacje i ćwiczenia praktyczne",
-      "Śledzenie postępów w nauce",
-      "Bezpośredni kontakt z wykładowcą",
+      'mają chaos w marketingu/sprzedaży i chcą procesu, nie \u201Etipów\u201D',
+      "chcą wdrożyć AI bez zatrudniania nowego zespołu",
+      "chcą wykorzystać środki z dotacji, ale nie mają czasu na formalności",
     ],
   },
-  zajecia: {
+  jakpracujemy: {
     image: tabWorkshop,
-    heading: "80% praktyki, nie teorii",
+    heading: "Jak pracujemy (80% praktyki)",
     description:
-      'Nie robimy szkolenia „pod slajdy". Pracujemy na Twoich przypadkach: lead → follow-up → pipeline → automatyzacje → raport.',
-    bullets: [
-      "Warsztaty na żywo i online",
-      "Praca na realnych case'ach z Twojej firmy",
-      "Checklisty i szablony do wdrożenia",
-      "Gotowe automaty po szkoleniu",
-    ],
+      'Nie robimy szkolenia \u201Epod slajdy\u201D. Pracujemy na Twoich przypadkach: lead \u2192 follow-up \u2192 pipeline \u2192 automatyzacje \u2192 raport. Po warsztacie dostajesz paczk\u0119 wdro\u017Ceniow\u0105: checklisty, szablony, gotowe automaty.',
+    bullets: [],
   },
-  zespol: {
+  czego: {
     image: tabTeam,
-    heading: "Eksperci-praktycy, nie tylko trenerzy",
-    description:
-      "Nasi wykładowcy to specjaliści, którzy na co dzień wdrażają AI i automatyzacje w firmach. Nie uczą teorii — pokazują co działa.",
+    heading: "Czego możesz się spodziewać po tygodniu",
+    description: "",
     bullets: [
-      "Doświadczenie w AI, marketingu i sprzedaży",
-      "Certyfikowani trenerzy",
-      "Portfolio realnych wdrożeń",
-      "Indywidualne podejście do uczestników",
-    ],
-  },
-  wsparcie: {
-    image: tabSupport,
-    heading: "Nie zostaniesz sam po szkoleniu",
-    description:
-      "Mentoring i wsparcie po szkoleniu to standard. Pomagamy wdrożyć rozwiązania w Twojej firmie i odpowiadamy na pytania.",
-    bullets: [
-      "Mentoring po zakończeniu kursu",
-      "Grupa wsparcia absolwentów",
-      "Materiały dodatkowe i aktualizacje",
-      "Pomoc we wdrożeniu narzędzi",
+      "mniej ręcznej roboty (powtarzalne rzeczy robi system)",
+      "lepsza jakość leadów i szybszy follow-up",
+      'zesp\u00F3\u0142 wie \u201Eco jest nast\u0119pne\u201D (pipeline + odpowiedzialno\u015Bci)',
     ],
   },
 };
 
 export const ForWhoSection = () => {
-  const [activeTab, setActiveTab] = useState("system");
+  const [activeTab, setActiveTab] = useState("dlakogo");
   const content = contentData[activeTab as keyof typeof contentData];
 
   return (
@@ -129,22 +107,24 @@ export const ForWhoSection = () => {
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   {content.description}
                 </p>
-                <ul className="space-y-3">
-                  {content.bullets.map((bullet, i) => (
-                    <motion.li
-                      key={bullet}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-3"
-                    >
-                      <div className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3.5 h-3.5 text-secondary" />
-                      </div>
-                      <span className="text-gray-700">{bullet}</span>
-                    </motion.li>
-                  ))}
-                </ul>
+                {content.bullets.length > 0 && (
+                  <ul className="space-y-3">
+                    {content.bullets.map((bullet, i) => (
+                      <motion.li
+                        key={bullet}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        className="flex items-start gap-3"
+                      >
+                        <div className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Check className="w-3.5 h-3.5 text-secondary" />
+                        </div>
+                        <span className="text-gray-700">{bullet}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </motion.div>
           </AnimatePresence>
