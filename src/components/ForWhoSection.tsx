@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, Target, Star, Check } from "lucide-react";
+import { User, Gift, Wallet, BookOpen, Check } from "lucide-react";
 
 import tabLearning from "@/assets/tab-learning.webp";
 import tabWorkshop from "@/assets/tab-workshop.webp";
@@ -9,36 +9,52 @@ import tabSupport from "@/assets/tab-support.webp";
 
 const tabs = [
   { id: "dlakogo", label: "Dla kogo jest szkolenie", icon: User },
-  { id: "jakpracujemy", label: "Jak pracujemy", icon: Target },
-  { id: "czego", label: "Czego możesz się spodziewać", icon: Star },
+  { id: "korzysci", label: "Korzyści", icon: Gift },
+  { id: "dofinansowanie", label: "Dofinansowanie", icon: Wallet },
+  { id: "jakwyglada", label: "Jak wygląda szkolenie", icon: BookOpen },
 ];
 
 const contentData = {
   dlakogo: {
     image: tabLearning,
     heading: "Dla kogo jest szkolenie",
-    description: "To jest dla firm, które:",
+    description: "To szkolenie jest dla:",
     bullets: [
-      'mają chaos w marketingu/sprzedaży i chcą procesu, nie \u201Etipów\u201D',
-      "chcą wdrożyć AI bez zatrudniania nowego zespołu",
-      "chcą wykorzystać środki z dotacji, ale nie mają czasu na formalności",
+      "Osoby indywidualne chcące rozwinąć kompetencje cyfrowe lub zmienić zawód",
+      "JDG",
+      "MSP dział marketingu, dział sprzedaży",
     ],
   },
-  jakpracujemy: {
-    image: tabWorkshop,
-    heading: "Jak pracujemy (80% praktyki)",
-    description:
-      'Nie robimy szkolenia \u201Epod slajdy\u201D. Pracujemy na Twoich przypadkach: lead \u2192 follow-up \u2192 pipeline \u2192 automatyzacje \u2192 raport. Po warsztacie dostajesz paczk\u0119 wdro\u017Ceniow\u0105: checklisty, szablony, gotowe automaty.',
-    bullets: [],
-  },
-  czego: {
+  korzysci: {
     image: tabTeam,
-    heading: "Czego możesz się spodziewać po tygodniu",
-    description: "",
+    heading: "Korzyści",
+    description: "Co zyskujesz uczestnicząc w programie:",
     bullets: [
-      "mniej ręcznej roboty (powtarzalne rzeczy robi system)",
-      "lepsza jakość leadów i szybszy follow-up",
-      'zesp\u00F3\u0142 wie \u201Eco jest nast\u0119pne\u201D (pipeline + odpowiedzialno\u015Bci)',
+      "Praktyczne umiejętności gotowe do wdrożenia od razu po szkoleniu",
+      "Dostęp do nowoczesnych narzędzi AI i automatyzacji",
+      "Certyfikat potwierdzający kompetencje cyfrowe",
+    ],
+  },
+  dofinansowanie: {
+    image: tabSupport,
+    heading: "Dofinansowanie - Jak to działa",
+    description: "Proces uzyskania dofinansowania:",
+    bullets: [
+      "Wypełnij formularz - sprawdzimy Twoje uprawnienia do dotacji",
+      "Bezpłatnie przygotujemy i złożymy wniosek za Ciebie",
+      "Otrzymasz dofinansowanie do 100% kosztów szkolenia",
+    ],
+  },
+  jakwyglada: {
+    image: tabWorkshop,
+    heading: "Jak wygląda szkolenie?",
+    description: "Format i metodologia:",
+    bullets: [
+      "Szkolenia online lub na żywo + platforma kursowa",
+      "20% teorii, 80% praktyki",
+      "Certyfikacja",
+      "Mentoring i wsparcie po szkoleniu",
+      "Wdrożenia narzędzi i obsługa marketingu",
     ],
   },
 };
