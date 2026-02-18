@@ -56,6 +56,11 @@ export const Footer = () => {
                 className="input-glass"
               />
               <input
+                type="email"
+                placeholder="Adres e-mail"
+                className="input-glass"
+              />
+              <input
                 type="tel"
                 placeholder="+48 XXX XXX XXX"
                 className="input-glass"
