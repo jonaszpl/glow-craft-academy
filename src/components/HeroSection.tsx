@@ -19,7 +19,7 @@ export const HeroSection = () => {
       <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/8 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
+      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center mt-[40px]">
 
         {/* 1. Category Pills */}
         <motion.div
@@ -28,9 +28,9 @@ export const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="flex gap-3 justify-center flex-wrap mb-6">
 
-          <span className="font-semibold text-sm px-4 py-1.5 rounded-full border-2 border-[#00FFFC] text-[#00FFFC]" style={{background: "rgba(0,0,0,0.3)"}}>AI</span>
-          <span className="font-semibold text-sm px-4 py-1.5 rounded-full border-2 border-[#00FFFC] text-[#00FFFC]" style={{background: "rgba(0,0,0,0.3)"}}>Marketing</span>
-          <span className="font-semibold text-sm px-4 py-1.5 rounded-full border-2 border-[#FA521A] text-[#FA521A]" style={{background: "rgba(0,0,0,0.3)"}}>Sprzedaż</span>
+          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">AI</span>
+          <span className="bg-primary text-primary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Marketing</span>
+          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Sprzedaż</span>
         </motion.div>
 
         {/* 2. Main Headline */}
