@@ -1,15 +1,7 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Tag, Percent, Clock, FileText } from "lucide-react";
-import { Button } from "./ui/button";
+import { ArrowRight, Tag, Percent, Clock, FileText } from "lucide-react";
 import { LogoSlider } from "./LogoSlider";
 import { HeroForm } from "./HeroForm";
-
-const bullets = [
-  "80% praktyki: pracujemy na Twoich procesach i narzędziach",
-  "Szybka kwalifikacja: wracamy z informacją OK / do uzupełnienia",
-  "Jasne zasady: wkład własny zwykle ok. 20% + refundacja po ok. 45–50 dniach (zależnie od programu)",
-];
 
 const stats = [
   { icon: Tag, title: "Cena szkolenia", value: "3 000 pln netto", subtitle: "na osobę" },
@@ -28,73 +20,121 @@ export const HeroSection = () => {
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/8 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
-        {/* 1. Centered Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mb-8"
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-foreground">
-            Szkolenia AI z dofinansowaniem dla firm
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Zrób z AI i automatyzacji realny system w firmie — nie kolejną prezentację.
-            <br className="hidden md:block" />
-            Najpierw sprawdzimy, czy Twoja firma kwalifikuje się do dofinansowania.
-          </p>
-        </motion.div>
 
-        {/* 2. Bullet Points */}
+        {/* 1. Category Pills */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-col gap-3 mb-12 max-w-2xl"
+          transition={{ duration: 0.5 }}
+          className="flex gap-3 justify-center flex-wrap mb-6"
         >
-          {bullets.map((text, i) => (
-            <div key={i} className="flex items-start gap-3">
-              <Check className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
-              <span className="text-muted-foreground text-sm md:text-base">{text}</span>
-            </div>
-          ))}
+          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">AI</span>
+          <span className="bg-primary text-primary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Marketing</span>
+          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Sprzedaż</span>
         </motion.div>
 
-        {/* 3. Logo Slider */}
+        {/* 2. Main Headline */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center mb-6"
+        >
+          <h1
+            className="font-black text-foreground leading-[1.1] tracking-tight"
+            style={{ fontSize: "clamp(48px, 8vw, 96px)" }}
+          >
+            Szkolenia
+            <br />
+            <span
+              style={{
+                background: "linear-gradient(90deg, #FA521A 0%, #00FFFC 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                display: "inline-block",
+              }}
+            >
+              przyszłości
+            </span>
+          </h1>
+        </motion.div>
+
+        {/* 3. Subheadline */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-foreground font-medium text-center mb-4"
+          style={{ fontSize: "clamp(20px, 3vw, 32px)" }}
+        >
+          Do 100% dofinansowania dla firm i osób indywidualnych
+        </motion.p>
+
+        {/* 4. Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-muted-foreground text-center max-w-2xl mb-8 leading-relaxed"
+          style={{ fontSize: "clamp(16px, 2vw, 20px)" }}
+        >
+          Wypełnij formularz, złożymy dla Ciebie bezpłatny wniosek o dofinansowanie. Zdobądź kompetencje w AI, marketingu i sprzedaży.
+        </motion.p>
+
+        {/* 5. CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mb-16"
+        >
+          <button
+            className="bg-primary text-primary-foreground font-semibold text-lg px-8 py-4 rounded-lg transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
+            style={{ minHeight: "56px", boxShadow: "0 8px 30px hsl(var(--orange) / 0.4)" }}
+            onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 12px 40px hsl(var(--orange) / 0.6)")}
+            onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 8px 30px hsl(var(--orange) / 0.4)")}
+          >
+            Uzyskaj dofinansowanie
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        </motion.div>
+
+        {/* 6. Logo Slider */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="w-full mb-12"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="w-full mb-16"
         >
           <LogoSlider />
         </motion.div>
 
-        {/* 4. Glassmorphism Form */}
+        {/* 7. Glassmorphism Form */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="w-full max-w-lg mb-6"
         >
           <HeroForm />
         </motion.div>
 
-        {/* 5. Trust Line */}
+        {/* 8. Trust Line */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
-          className="text-xs text-muted-foreground text-center mb-16 max-w-md"
+          transition={{ delay: 0.8 }}
+          className="text-xs text-muted-foreground text-center mb-20 max-w-md"
         >
           Współpracujemy z partnerem dotacyjnym: DofinansujTo.pl (weryfikacja i prowadzenie wniosku).
         </motion.p>
 
-        {/* 6. Stats Cards */}
+        {/* 9. Stats Cards */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl"
         >
           {stats.map((stat, i) => (
