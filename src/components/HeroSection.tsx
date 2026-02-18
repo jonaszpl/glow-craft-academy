@@ -26,11 +26,23 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex gap-3 justify-center flex-wrap mb-6">
+          className="flex gap-3 justify-center flex-wrap mb-6 mt-12">
 
-          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">AI</span>
-          <span className="bg-primary text-primary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Marketing</span>
-          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Sprzedaż</span>
+          <span
+            className="font-semibold text-sm px-4 py-1.5 rounded-full border-2"
+            style={{ borderColor: "#00FFFC", color: "#00FFFC", background: "rgba(0,0,0,0.2)" }}>
+            AI
+          </span>
+          <span
+            className="font-semibold text-sm px-4 py-1.5 rounded-full border-2"
+            style={{ borderColor: "#FA521A", color: "#FA521A", background: "rgba(0,0,0,0.2)" }}>
+            Marketing
+          </span>
+          <span
+            className="font-semibold text-sm px-4 py-1.5 rounded-full border-2"
+            style={{ borderColor: "#00FFFC", color: "#00FFFC", background: "rgba(0,0,0,0.2)" }}>
+            Sprzedaż
+          </span>
         </motion.div>
 
         {/* 2. Main Headline */}
@@ -40,21 +52,20 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center mb-6">
 
-          <h1
-            className="font-black text-foreground leading-[1.1] tracking-tight"
-            style={{ fontSize: "clamp(48px, 8vw, 96px)" }}>
-
-            Szkolenia
-            <br />
+          <h1 className="font-black text-foreground leading-[1.1] tracking-tight text-center">
+            <span style={{ fontSize: "clamp(48px, 6vw, 72px)", display: "block" }}>
+              Szkolenia
+            </span>
             <span
               style={{
+                fontSize: "clamp(64px, 10vw, 120px)",
                 background: "linear-gradient(90deg, #FA521A 0%, #00FFFC 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                display: "inline-block"
+                display: "inline-block",
+                lineHeight: 1.1
               }}>
-
               przyszłości
             </span>
           </h1>
