@@ -4,11 +4,11 @@ import { LogoSlider } from "./LogoSlider";
 import { HeroForm } from "./HeroForm";
 
 const stats = [
-  { icon: Tag, title: "Cena szkolenia", value: "3 000 pln netto", subtitle: "na osobę" },
-  { icon: Percent, title: "Cena po dofinansowaniu", value: "80%", subtitle: "600 pln netto" },
-  { icon: Clock, title: "Czas szkolenia", value: "16 h", subtitle: "stacjonarnie lub online" },
-  { icon: FileText, title: "Bezpłatny wniosek", value: "", subtitle: "o dofinansowanie" },
-];
+{ icon: Tag, title: "Cena szkolenia", value: "3 000 pln netto", subtitle: "na osobę" },
+{ icon: Percent, title: "Cena po dofinansowaniu", value: "80%", subtitle: "600 pln netto" },
+{ icon: Clock, title: "Czas szkolenia", value: "16 h", subtitle: "stacjonarnie lub online" },
+{ icon: FileText, title: "Bezpłatny wniosek", value: "", subtitle: "o dofinansowanie" }];
+
 
 export const HeroSection = () => {
   return (
@@ -19,16 +19,16 @@ export const HeroSection = () => {
       <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/8 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
+      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center mt-[48px]">
 
         {/* 1. Category Pills */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex gap-3 justify-center flex-wrap mb-6"
-        >
-          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">AI</span>
+          className="flex gap-3 justify-center flex-wrap mb-6">
+
+          <span className="font-semibold text-sm px-4 py-1.5 rounded-full bg-[#00fffb]/[0.42] text-[#00fffb]">AI</span>
           <span className="bg-primary text-primary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Marketing</span>
           <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Sprzedaż</span>
         </motion.div>
@@ -38,12 +38,12 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-center mb-6"
-        >
+          className="text-center mb-6">
+
           <h1
             className="font-black text-foreground leading-[1.1] tracking-tight"
-            style={{ fontSize: "clamp(48px, 8vw, 96px)" }}
-          >
+            style={{ fontSize: "clamp(48px, 8vw, 96px)" }}>
+
             Szkolenia
             <br />
             <span
@@ -52,9 +52,9 @@ export const HeroSection = () => {
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                display: "inline-block",
-              }}
-            >
+                display: "inline-block"
+              }}>
+
               przyszłości
             </span>
           </h1>
@@ -66,8 +66,8 @@ export const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-foreground font-medium text-center mb-4"
-          style={{ fontSize: "clamp(20px, 3vw, 32px)" }}
-        >
+          style={{ fontSize: "clamp(20px, 3vw, 32px)" }}>
+
           Do 100% dofinansowania dla firm i osób indywidualnych
         </motion.p>
 
@@ -77,8 +77,8 @@ export const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-muted-foreground text-center max-w-2xl mb-8 leading-relaxed"
-          style={{ fontSize: "clamp(16px, 2vw, 20px)" }}
-        >
+          style={{ fontSize: "clamp(16px, 2vw, 20px)" }}>
+
           Wypełnij formularz, złożymy dla Ciebie bezpłatny wniosek o dofinansowanie. Zdobądź kompetencje w AI, marketingu i sprzedaży.
         </motion.p>
 
@@ -87,14 +87,14 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mb-16"
-        >
+          className="mb-16">
+
           <button
             className="bg-primary text-primary-foreground font-semibold text-lg px-8 py-4 rounded-lg transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
             style={{ minHeight: "56px", boxShadow: "0 8px 30px hsl(var(--orange) / 0.4)" }}
-            onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 12px 40px hsl(var(--orange) / 0.6)")}
-            onMouseLeave={e => (e.currentTarget.style.boxShadow = "0 8px 30px hsl(var(--orange) / 0.4)")}
-          >
+            onMouseEnter={(e) => e.currentTarget.style.boxShadow = "0 12px 40px hsl(var(--orange) / 0.6)"}
+            onMouseLeave={(e) => e.currentTarget.style.boxShadow = "0 8px 30px hsl(var(--orange) / 0.4)"}>
+
             Uzyskaj dofinansowanie
             <ArrowRight className="w-5 h-5" />
           </button>
@@ -105,8 +105,8 @@ export const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="w-full mb-16"
-        >
+          className="w-full mb-16">
+
           <LogoSlider />
         </motion.div>
 
@@ -115,8 +115,8 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="w-full max-w-lg mb-6"
-        >
+          className="w-full max-w-lg mb-6">
+
           <HeroForm />
         </motion.div>
 
@@ -125,8 +125,8 @@ export const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="text-xs text-muted-foreground text-center mb-20 max-w-md"
-        >
+          className="text-xs text-muted-foreground text-center mb-20 max-w-md">
+
           Współpracujemy z partnerem dotacyjnym: DofinansujTo.pl (weryfikacja i prowadzenie wniosku).
         </motion.p>
 
@@ -135,25 +135,25 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl"
-        >
-          {stats.map((stat, i) => (
-            <div
-              key={i}
-              className="glass rounded-2xl p-5 text-center flex flex-col items-center gap-2"
-            >
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl">
+
+          {stats.map((stat, i) =>
+          <div
+            key={i}
+            className="glass rounded-2xl p-5 text-center flex flex-col items-center gap-2">
+
               <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center mb-1">
                 <stat.icon className="w-5 h-5 text-foreground" />
               </div>
               <span className="text-xs text-muted-foreground">{stat.title}</span>
-              {stat.value && (
-                <span className="text-2xl font-bold text-foreground">{stat.value}</span>
-              )}
+              {stat.value &&
+            <span className="text-2xl font-bold text-foreground">{stat.value}</span>
+            }
               <span className="text-xs text-muted-foreground">{stat.subtitle}</span>
             </div>
-          ))}
+          )}
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
