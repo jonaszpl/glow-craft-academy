@@ -19,7 +19,7 @@ export const HeroSection = () => {
       <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/8 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center mt-[48px]">
+      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
 
         {/* 1. Category Pills */}
         <motion.div
@@ -28,7 +28,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="flex gap-3 justify-center flex-wrap mb-6">
 
-          <span className="font-semibold text-sm px-4 py-1.5 rounded-full bg-[#00fffb]/[0.42] text-[#00fffb]">AI</span>
+          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">AI</span>
           <span className="bg-primary text-primary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Marketing</span>
           <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Sprzedaż</span>
         </motion.div>
@@ -131,28 +131,28 @@ export const HeroSection = () => {
         </motion.p>
 
         {/* 9. Stats Cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-4xl">
+        
 
-          {stats.map((stat, i) =>
-          <div
-            key={i}
-            className="glass rounded-2xl p-5 text-center flex flex-col items-center gap-2">
 
-              <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center mb-1">
-                <stat.icon className="w-5 h-5 text-foreground" />
-              </div>
-              <span className="text-xs text-muted-foreground">{stat.title}</span>
-              {stat.value &&
-            <span className="text-2xl font-bold text-foreground">{stat.value}</span>
-            }
-              <span className="text-xs text-muted-foreground">{stat.subtitle}</span>
-            </div>
-          )}
-        </motion.div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
     </section>);
 
