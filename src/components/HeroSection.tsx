@@ -28,9 +28,9 @@ export const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="flex gap-3 justify-center flex-wrap mb-6">
 
-          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full ">AI</span>
-          <span className="bg-primary text-primary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Marketing</span>
-          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full">Sprzedaż</span>
+          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full border-2 border-[#00FFFC]">AI</span>
+          <span className="bg-primary text-primary-foreground font-semibold text-sm px-4 py-1.5 rounded-full border-2 border-[#00FFFC]">Marketing</span>
+          <span className="bg-secondary text-secondary-foreground font-semibold text-sm px-4 py-1.5 rounded-full border-2 border-[#FA521A]">Sprzedaż</span>
         </motion.div>
 
         {/* 2. Main Headline */}
