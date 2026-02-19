@@ -31,11 +31,11 @@ export const CTASection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="xl">
+              <Button variant="hero" size="xl" onClick={() => document.getElementById('hero-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}>
                 Umów konsultację
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <a href="https://wa.me/48505110377" target="_blank" rel="noopener noreferrer">
+              <a href="tel:+48505110377">
                 <Button variant="glass" size="xl" className="w-full">
                   <MessageCircle className="mr-2 w-5 h-5" />
                   Zadzwoń

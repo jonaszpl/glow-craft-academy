@@ -104,7 +104,8 @@ export const HeroSection = () => {
             className="bg-primary text-primary-foreground font-semibold text-lg px-8 py-4 rounded-lg transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2"
             style={{ minHeight: "56px", boxShadow: "0 8px 30px hsl(var(--orange) / 0.4)" }}
             onMouseEnter={(e) => e.currentTarget.style.boxShadow = "0 12px 40px hsl(var(--orange) / 0.6)"}
-            onMouseLeave={(e) => e.currentTarget.style.boxShadow = "0 8px 30px hsl(var(--orange) / 0.4)"}>
+            onMouseLeave={(e) => e.currentTarget.style.boxShadow = "0 8px 30px hsl(var(--orange) / 0.4)"}
+            onClick={() => document.getElementById('hero-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}>
 
             Uzyskaj dofinansowanie
             <ArrowRight className="w-5 h-5" />
