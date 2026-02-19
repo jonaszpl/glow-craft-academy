@@ -25,7 +25,7 @@ export const LogoSlider = () => {
             <img
               src={logo.src}
               alt={logo.name}
-              className="h-[45px] w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+              className="h-[50px] max-h-[50px] w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
               style={{ filter: "brightness(0) invert(1)" }}
             />
           </div>
