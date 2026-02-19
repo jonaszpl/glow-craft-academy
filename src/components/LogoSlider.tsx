@@ -16,18 +16,22 @@ export const LogoSlider = () => {
       <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
       <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
 
-      <div className="flex animate-scroll">
-        {[...logos, ...logos].map((logo, i) => (
-          <div
-            key={i}
-            className="flex-shrink-0 mx-8 flex items-center justify-center"
-          >
-            <img
-              src={logo.src}
-              alt={logo.name}
-              className="h-[50px] max-h-[50px] w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
-              style={{ filter: "brightness(0) invert(1)" }}
-            />
+      <div className="flex animate-scroll" style={{ width: "200%" }}>
+        {[0, 1].map((setIndex) => (
+          <div key={setIndex} className="flex items-center" style={{ minWidth: "50%", justifyContent: "space-around" }}>
+            {logos.map((logo, i) => (
+              <div
+                key={`${setIndex}-${i}`}
+                className="flex-shrink-0 mx-6 flex items-center justify-center"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  className="h-[28px] w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+                  style={{ filter: "brightness(0) invert(1)" }}
+                />
+              </div>
+            ))}
           </div>
         ))}
       </div>

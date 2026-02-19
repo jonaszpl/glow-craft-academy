@@ -8,7 +8,6 @@ const courses = [
     borderColor: "#FA521A",
     title: "Cyberbezpieczeństwo w erze AI",
     description: "Minimum wymagań + praktyczne procedury + higiena danych w zespole.",
-    initials: "JK",
   },
   {
     badge: "AI & AUTOMATYZACJA",
@@ -17,7 +16,6 @@ const courses = [
     borderColor: "#00FFFC",
     title: "Voiceboty dla firm",
     description: "Obsługa zapytań 24/7, kwalifikacja leadów i automatyczne follow-upy.",
-    initials: "AN",
   },
   {
     badge: "MARKETING",
@@ -26,7 +24,6 @@ const courses = [
     borderColor: "#52C41A",
     title: "Jak generować leady w 2026 roku",
     description: "AI + automatyzacje + proces sprzedaży: od wejścia do zamknięcia.",
-    initials: "PW",
   },
   {
     badge: "AI & CONTENT",
@@ -35,7 +32,6 @@ const courses = [
     borderColor: "#722ED1",
     title: "AI w marketingu i content",
     description: "Treści, reklamy, scenariusze, newslettery — szybciej i spójnie.",
-    initials: "MK",
   },
   {
     badge: "SPRZEDAŻ",
@@ -44,7 +40,6 @@ const courses = [
     borderColor: "#1890FF",
     title: "AI w sprzedaży i obsłudze klienta",
     description: "Skrypty rozmów, pipeline, follow-up, notatki i automaty.",
-    initials: "TL",
   },
   {
     badge: "AUTOMATYZACJE",
@@ -53,7 +48,6 @@ const courses = [
     borderColor: "#FF7A00",
     title: "Automatyzacje (Make / CRM / Workspace)",
     description: "Łączymy narzędzia w jeden system, który oszczędza czas i błędy.",
-    initials: "KZ",
   },
 ];
 
@@ -82,7 +76,7 @@ export const CoursesSection = () => {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center px-4 sm:px-0">
           {courses.map((course, index) => (
             <motion.div
               key={course.title}
@@ -90,9 +84,9 @@ export const CoursesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
-              className="group bg-[#1a1a1a] rounded-2xl p-10 flex flex-col justify-between cursor-pointer w-full max-w-md"
+              className="group bg-[#1a1a1a] rounded-2xl p-10 flex flex-col justify-between cursor-pointer w-full max-w-[400px] mx-auto"
               style={{
-                minHeight: "320px",
+                minHeight: "300px",
                 border: "2px solid transparent",
                 transition: "all 0.3s ease",
               }}
@@ -103,8 +97,8 @@ export const CoursesSection = () => {
               }}
               onClick={scrollToForm}
             >
-              {/* Top row: Badge + Photo */}
-              <div className="flex items-start justify-between mb-4">
+              {/* Badge */}
+              <div className="mb-4">
                 <span
                   className="inline-block px-3 py-1 rounded-full text-xs font-bold"
                   style={{
@@ -115,17 +109,6 @@ export const CoursesSection = () => {
                 >
                   {course.badge}
                 </span>
-
-                {/* Instructor photo placeholder */}
-                <div
-                  className="w-[72px] h-[72px] rounded-full flex items-center justify-center flex-shrink-0 ml-4"
-                  style={{
-                    background: `linear-gradient(135deg, ${course.badgeColor}33, ${course.badgeColor}66)`,
-                    border: `2px solid ${course.badgeColor}55`,
-                  }}
-                >
-                  <span className="text-white text-lg font-bold">{course.initials}</span>
-                </div>
               </div>
 
               {/* Title & Description */}
