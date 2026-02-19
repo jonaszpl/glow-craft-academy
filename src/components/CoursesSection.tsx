@@ -76,7 +76,7 @@ export const CoursesSection = () => {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center px-4 sm:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center px-4 md:px-0">
           {courses.map((course, index) => (
             <motion.div
               key={course.title}
