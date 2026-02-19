@@ -12,7 +12,7 @@ const stats = [
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex flex-col pt-24 pb-16 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col pt-24 pb-16 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-background" />
       <div className="absolute bottom-0 left-0 right-0 h-[60%] bg-gradient-hero opacity-60" />

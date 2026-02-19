@@ -84,7 +84,7 @@ export const CoursesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
-              className="group bg-[#1a1a1a] rounded-2xl p-10 flex flex-col justify-between cursor-pointer w-full max-w-[400px] mx-auto"
+              className="group bg-[#1a1a1a] rounded-2xl p-10 flex flex-col justify-between cursor-pointer w-full max-w-[480px] mx-auto"
               style={{
                 minHeight: "300px",
                 border: "2px solid transparent",
