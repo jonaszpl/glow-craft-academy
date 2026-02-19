@@ -58,8 +58,8 @@ const scrollToForm = () => {
 
 export const CoursesSection = () => {
   return (
-    <section id="kursy" className="section-padding bg-white">
-      <div className="container mx-auto">
+    <section id="kursy" className="py-20 md:py-32 bg-white overflow-x-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -76,7 +76,7 @@ export const CoursesSection = () => {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center px-4 md:px-0">
+        <div className="flex flex-col items-center gap-6 md:grid md:grid-cols-2 lg:grid-cols-3">
           {courses.map((course, index) => (
             <motion.div
               key={course.title}
@@ -84,7 +84,7 @@ export const CoursesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
-              className="group bg-[#1a1a1a] rounded-2xl p-10 flex flex-col justify-between cursor-pointer w-full max-w-[480px] mx-auto"
+              className="group bg-[#1a1a1a] rounded-2xl p-8 md:p-10 flex flex-col justify-between cursor-pointer w-full max-w-[480px]"
               style={{
                 minHeight: "300px",
                 border: "2px solid transparent",
