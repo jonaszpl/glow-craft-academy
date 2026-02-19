@@ -1,5 +1,12 @@
 const logos = [
-  "ChatGPT", "Gemini", "Make", "NotebookLM", "Canva", "Meta", "Google", "ElevenLabs",
+  { name: "ChatGPT", src: "/logos/chatgpt.svg" },
+  { name: "Gemini", src: "/logos/gemini.svg" },
+  { name: "Make", src: "/logos/make.svg" },
+  { name: "NotebookLM", src: "/logos/notebooklm.svg" },
+  { name: "Canva", src: "/logos/canva.svg" },
+  { name: "Meta", src: "/logos/meta.svg" },
+  { name: "Google", src: "/logos/google.svg" },
+  { name: "ElevenLabs", src: "/logos/elevenlabs.svg" },
 ];
 
 export const LogoSlider = () => {
@@ -10,14 +17,17 @@ export const LogoSlider = () => {
       <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
 
       <div className="flex animate-scroll">
-        {[...logos, ...logos].map((name, i) => (
+        {[...logos, ...logos].map((logo, i) => (
           <div
             key={i}
             className="flex-shrink-0 mx-8 flex items-center justify-center"
           >
-            <span className="text-muted-foreground/40 text-sm font-semibold tracking-widest uppercase whitespace-nowrap">
-              {name}
-            </span>
+            <img
+              src={logo.src}
+              alt={logo.name}
+              className="h-[45px] w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+              style={{ filter: "brightness(0) invert(1)" }}
+            />
           </div>
         ))}
       </div>

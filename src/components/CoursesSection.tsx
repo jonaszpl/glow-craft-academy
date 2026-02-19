@@ -4,76 +4,63 @@ const courses = [
   {
     badge: "CYBERBEZPIECZEŃSTWO",
     badgeColor: "#FA521A",
-    badgeTextColor: "#FA521A",
     glowColor: "rgba(250, 82, 26, 0.4)",
     borderColor: "#FA521A",
     title: "Cyberbezpieczeństwo w erze AI",
     description: "Minimum wymagań + praktyczne procedury + higiena danych w zespole.",
-    instructor: "Jan Kowalski",
-    role: "cyberbezpieczeństwo",
     initials: "JK",
   },
   {
     badge: "AI & AUTOMATYZACJA",
     badgeColor: "#00FFFC",
-    badgeTextColor: "#00FFFC",
     glowColor: "rgba(0, 255, 252, 0.4)",
     borderColor: "#00FFFC",
     title: "Voiceboty dla firm",
     description: "Obsługa zapytań 24/7, kwalifikacja leadów i automatyczne follow-upy.",
-    instructor: "Anna Nowak",
-    role: "AI & automatyzacje",
     initials: "AN",
   },
   {
     badge: "MARKETING",
     badgeColor: "#52C41A",
-    badgeTextColor: "#52C41A",
     glowColor: "rgba(82, 196, 26, 0.4)",
     borderColor: "#52C41A",
     title: "Jak generować leady w 2026 roku",
     description: "AI + automatyzacje + proces sprzedaży: od wejścia do zamknięcia.",
-    instructor: "Piotr Wiśniewski",
-    role: "marketing & sprzedaż",
     initials: "PW",
   },
   {
     badge: "AI & CONTENT",
     badgeColor: "#722ED1",
-    badgeTextColor: "#722ED1",
     glowColor: "rgba(114, 46, 209, 0.4)",
     borderColor: "#722ED1",
     title: "AI w marketingu i content",
     description: "Treści, reklamy, scenariusze, newslettery — szybciej i spójnie.",
-    instructor: "Magdalena Kowalczyk",
-    role: "content marketing",
     initials: "MK",
   },
   {
     badge: "SPRZEDAŻ",
     badgeColor: "#1890FF",
-    badgeTextColor: "#1890FF",
     glowColor: "rgba(24, 144, 255, 0.4)",
     borderColor: "#1890FF",
     title: "AI w sprzedaży i obsłudze klienta",
     description: "Skrypty rozmów, pipeline, follow-up, notatki i automaty.",
-    instructor: "Tomasz Lewandowski",
-    role: "sprzedaż",
     initials: "TL",
   },
   {
     badge: "AUTOMATYZACJE",
     badgeColor: "#FF7A00",
-    badgeTextColor: "#FF7A00",
     glowColor: "rgba(255, 122, 0, 0.4)",
     borderColor: "#FF7A00",
     title: "Automatyzacje (Make / CRM / Workspace)",
     description: "Łączymy narzędzia w jeden system, który oszczędza czas i błędy.",
-    instructor: "Karolina Zielińska",
-    role: "automatyzacje",
     initials: "KZ",
   },
 ];
+
+const scrollToForm = () => {
+  const form = document.getElementById("hero-form");
+  if (form) form.scrollIntoView({ behavior: "smooth", block: "center" });
+};
 
 export const CoursesSection = () => {
   return (
@@ -95,7 +82,7 @@ export const CoursesSection = () => {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
           {courses.map((course, index) => (
             <motion.div
               key={course.title}
@@ -103,7 +90,7 @@ export const CoursesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
-              className="group bg-[#1a1a1a] rounded-2xl p-10 flex flex-col justify-between cursor-pointer"
+              className="group bg-[#1a1a1a] rounded-2xl p-10 flex flex-col justify-between cursor-pointer w-full max-w-md"
               style={{
                 minHeight: "320px",
                 border: "2px solid transparent",
@@ -114,6 +101,7 @@ export const CoursesSection = () => {
                 boxShadow: `0 20px 40px ${course.glowColor}`,
                 borderColor: course.borderColor,
               }}
+              onClick={scrollToForm}
             >
               {/* Top row: Badge + Photo */}
               <div className="flex items-start justify-between mb-4">
@@ -122,7 +110,7 @@ export const CoursesSection = () => {
                   style={{
                     background: "transparent",
                     border: `2px solid ${course.badgeColor}`,
-                    color: course.badgeTextColor,
+                    color: course.badgeColor,
                   }}
                 >
                   {course.badge}
@@ -147,19 +135,13 @@ export const CoursesSection = () => {
                 <p className="text-gray-400 text-sm leading-relaxed">{course.description}</p>
               </div>
 
-              {/* Instructor */}
-              <div className="flex items-center gap-3 pt-5 mt-5 border-t border-white/10">
-                <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ background: `${course.badgeColor}33` }}
-                >
-                  <span style={{ color: course.badgeColor }} className="text-xs font-semibold">
-                    {course.initials}
-                  </span>
-                </div>
-                <p className="text-gray-500 text-xs">
-                  Ten program prowadzi: <span className="text-gray-300">{course.instructor}</span> / {course.role}
+              {/* Pricing */}
+              <div className="pt-5 mt-5 border-t border-white/10">
+                <p className="text-gray-500 text-sm line-through mb-1">3 690 zł</p>
+                <p className="text-lg font-bold" style={{ color: course.badgeColor }}>
+                  Cena po dofinansowaniu: <span className="text-white text-xl">738 zł</span>
                 </p>
+                <p className="text-gray-500 text-xs mt-1">za uczestnika</p>
               </div>
             </motion.div>
           ))}

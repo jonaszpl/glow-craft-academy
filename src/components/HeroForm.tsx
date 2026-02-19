@@ -21,7 +21,7 @@ export const HeroForm = () => {
   const prev = () => { if (step > 1) setStep(step - 1); };
 
   return (
-    <div className="relative">
+    <div className="relative" id="hero-form">
       <div className="absolute -inset-4 bg-gradient-primary opacity-15 blur-2xl rounded-3xl" />
       <div className="relative glass-strong rounded-3xl p-8 shadow-2xl">
         <div className="text-center mb-6">
@@ -52,20 +52,6 @@ export const HeroForm = () => {
               exit={{ opacity: 0, x: -20 }}
               className="space-y-4"
             >
-              <input name="name" value={formData.name} onChange={handleChange} placeholder="Imię i nazwisko" className="input-glass" />
-              <input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" className="input-glass" />
-              <input name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="+48 XXX XXX XXX" className="input-glass" />
-            </motion.div>
-          )}
-
-          {step === 2 && (
-            <motion.div
-              key="step2"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="space-y-4"
-            >
               <input name="company" value={formData.company} onChange={handleChange} placeholder="Nazwa firmy" className="input-glass" />
               <select name="employees" value={formData.employees} onChange={handleChange} className="input-glass">
                 <option value="">Liczba pracowników...</option>
@@ -77,9 +63,9 @@ export const HeroForm = () => {
             </motion.div>
           )}
 
-          {step === 3 && (
+          {step === 2 && (
             <motion.div
-              key="step3"
+              key="step2"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
@@ -90,9 +76,22 @@ export const HeroForm = () => {
                   <Check className="w-7 h-7 text-secondary" />
                 </div>
                 <h4 className="text-lg font-bold mb-1">Potwierdź dane</h4>
-                <p className="text-muted-foreground text-sm">{formData.name || "—"} • {formData.email || "—"}</p>
-                <p className="text-muted-foreground text-sm">{formData.phone || "—"} • {formData.company || "—"}</p>
+                <p className="text-muted-foreground text-sm">{formData.company || "—"} • {formData.employees || "—"}</p>
               </div>
+            </motion.div>
+          )}
+
+          {step === 3 && (
+            <motion.div
+              key="step3"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="space-y-4"
+            >
+              <input name="name" value={formData.name} onChange={handleChange} placeholder="Imię i nazwisko" className="input-glass" />
+              <input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" className="input-glass" />
+              <input name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="+48 XXX XXX XXX" className="input-glass" />
             </motion.div>
           )}
         </AnimatePresence>

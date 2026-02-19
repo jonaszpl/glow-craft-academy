@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+
 const faqs = [{
   question: "Czy podczas programu są rozmowy wideo?",
   answer: "Tak, program obejmuje regularne sesje wideo z mentorami oraz grupowe warsztaty online. Każdy uczestnik ma dostęp do indywidualnych konsultacji z ekspertami."
@@ -22,19 +23,12 @@ const faqs = [{
   question: "Czy znajdę odpowiedź na moje aktualne wyzwania w programie?",
   answer: "Nasze szkolenia są projektowane z myślą o praktycznych wyzwaniach biznesowych. Dodatkowo, podczas sesji mentorskich możesz pracować bezpośrednio nad swoimi case'ami i problemami."
 }];
+
 export const FAQSection = () => {
   return <section id="faq" className="section-padding bg-primary-foreground">
       <div className="container mx-auto max-w-4xl">
         {/* Section header */}
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} viewport={{
-        once: true
-      }} className="text-center mb-16">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-secondary-foreground">
             Często zadawane <span className="text-secondary-foreground">pytania</span>
           </h2>
@@ -44,21 +38,18 @@ export const FAQSection = () => {
         </motion.div>
 
         {/* FAQ Accordion */}
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} viewport={{
-        once: true
-      }}>
-          <Accordion type="single" collapsible className="space-y-4 text-muted bg-muted pl-[12px] px-[20px] py-[20px] rounded-2xl">
-            {faqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`} className="glass rounded-xl px-6 border-0 data-[state=open]:bg-white/10">
-                <AccordionTrigger className="text-left hover:no-underline py-6 text-lg font-medium">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, index) => <AccordionItem
+              key={index}
+              value={`item-${index}`}
+              className="rounded-xl px-6 border-0"
+              style={{ backgroundColor: "#1a1a1a" }}
+            >
+                <AccordionTrigger className="text-left hover:no-underline py-6 text-lg font-medium text-white" style={{ backgroundColor: "transparent" }}>
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-6 text-base leading-relaxed">
+                <AccordionContent className="pb-6 text-base leading-relaxed text-white/90">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>)}
