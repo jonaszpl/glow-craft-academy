@@ -1,34 +1,19 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Gift } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { Button } from "./ui/button";
+
 export const CTASection = () => {
   return <section className="section-padding bg-primary-foreground">
       <div className="container mx-auto">
-        <motion.div initial={{
-        opacity: 0,
-        y: 30
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} viewport={{
-        once: true
-      }} className="relative overflow-hidden">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative overflow-hidden">
           {/* Glow effects */}
           <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary/30 rounded-full blur-3xl" />
           <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-secondary/30 rounded-full blur-3xl" />
 
           <div className="relative glass rounded-3xl p-8 md:p-16 text-center bg-secondary-foreground">
             {/* Badge */}
-            <motion.div initial={{
-            opacity: 0,
-            scale: 0.8
-          }} whileInView={{
-            opacity: 1,
-            scale: 1
-          }} viewport={{
-            once: true
-          }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 text-secondary text-sm font-medium mb-6">
-              <Gift className="w-4 h-4" />
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 text-secondary text-sm font-medium mb-6">
+              <MessageCircle className="w-4 h-4" />
               Bezpłatna konsultacja
             </motion.div>
 
@@ -50,9 +35,12 @@ export const CTASection = () => {
                 Umów konsultację
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button variant="glass" size="xl">
-                Odbierz darmowy ebook
-              </Button>
+              <a href="https://wa.me/48505110377" target="_blank" rel="noopener noreferrer">
+                <Button variant="glass" size="xl" className="w-full">
+                  <MessageCircle className="mr-2 w-5 h-5" />
+                  Zadzwoń
+                </Button>
+              </a>
             </div>
 
             {/* Trust badges */}

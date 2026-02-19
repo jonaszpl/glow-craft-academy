@@ -72,8 +72,8 @@ export const ForWhoSection = () => {
             Poznaj nas od kuchni
           </h2>
 
-          {/* Tab navigation with icons */}
-          <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+          {/* Tab navigation - DESKTOP: inline tabs */}
+          <div className="hidden sm:flex flex-wrap justify-center gap-2 md:gap-3">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -88,7 +88,29 @@ export const ForWhoSection = () => {
                   }`}
                 >
                   <Icon className="w-4 h-4" />
-                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span>{tab.label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Tab navigation - MOBILE: vertical list with labels always visible */}
+          <div className="flex sm:hidden flex-col gap-2">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-all duration-300 rounded-xl text-left ${
+                    isActive
+                      ? "bg-primary text-primary-foreground shadow-lg"
+                      : "bg-transparent text-gray-600 border border-gray-300"
+                  }`}
+                >
+                  <Icon className="w-4 h-4 flex-shrink-0" />
+                  <span>{tab.label}</span>
                 </button>
               );
             })}

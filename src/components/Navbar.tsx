@@ -11,6 +11,11 @@ const navLinks = [
   { label: "FAQ", href: "#faq" },
 ];
 
+const scrollToForm = () => {
+  const form = document.getElementById("hero-form");
+  if (form) form.scrollIntoView({ behavior: "smooth", block: "center" });
+};
+
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -56,7 +61,7 @@ export const Navbar = () => {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Button variant="hero" size="lg">
+          <Button variant="hero" size="lg" onClick={scrollToForm}>
             Uzyskaj dofinansowanie
           </Button>
         </div>
@@ -90,7 +95,7 @@ export const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="hero" size="lg" className="w-full mt-2">
+              <Button variant="hero" size="lg" className="w-full mt-2" onClick={() => { setIsMobileMenuOpen(false); scrollToForm(); }}>
                 Uzyskaj dofinansowanie
               </Button>
             </div>
