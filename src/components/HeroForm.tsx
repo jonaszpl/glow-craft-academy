@@ -99,7 +99,7 @@ const RESULTS: Record<Segment, { heading: string; text: string; cta: string; hre
 
 /* ───────── Config ───────── */
 
-const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE"; // Get from https://web3forms.com
+const WEB3FORMS_ACCESS_KEY = "ba430135-2384-4875-a570-afefa0a32d77";
 
 /* ───────── Component ───────── */
 
