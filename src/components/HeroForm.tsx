@@ -97,10 +97,14 @@ const RESULTS: Record<Segment, { heading: string; text: string; cta: string; hre
   },
 };
 
+/* ───────── Config ───────── */
+
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE"; // Get from https://web3forms.com
+
 /* ───────── Component ───────── */
 
 export const HeroForm = () => {
-  const totalSteps = 6; // 5 questions + 1 contact
+  const totalSteps = 6;
   const [step, setStep] = useState(1);
   const [answers, setAnswers] = useState<(string | string[])[]>(Array(5).fill(""));
   const [points, setPoints] = useState<number[]>(Array(5).fill(0));
@@ -109,6 +113,7 @@ export const HeroForm = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [customIndustry, setCustomIndustry] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
   const totalScore = useMemo(() => points.reduce((a, b) => a + b, 0), [points]);
   const segment: Segment = totalScore >= 8 ? "HOT" : totalScore >= 4 ? "WARM" : "COLD";
@@ -165,14 +170,47 @@ export const HeroForm = () => {
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validateContact()) return;
     setLoading(true);
-    // simulate submission
-    setTimeout(() => {
+    setSubmitError("");
+
+    const formData: Record<string, string> = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: `Nowy lead: ${segment} - ${contact.name}`,
+      from_name: "Landing Page - Formularz Kwalifikacyjny",
+      name: contact.name,
+      email: contact.email,
+      phone: contact.phone,
+      "Branża": `${answers[0]} (${points[0]} pkt)`,
+      "Liczba pracowników": `${answers[1]} (${points[1]} pkt)`,
+      "Cel biznesowy": `${Array.isArray(answers[2]) ? answers[2].join(", ") : answers[2]} (${points[2]} pkt)`,
+      "Termin startu": `${answers[3]} (${points[3]} pkt)`,
+      "Wkład własny": `${answers[4]} (${points[4]} pkt)`,
+      "WYNIK PUNKTOWY": `${totalScore} / 12 punktów`,
+      "SEGMENT": segment,
+      "Data zgłoszenia": new Date().toLocaleString("pl-PL"),
+      botcheck: "",
+    };
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = await res.json();
+
+      if (result.success) {
+        setLoading(false);
+        setSubmitted(true);
+      } else {
+        throw new Error("fail");
+      }
+    } catch {
       setLoading(false);
-      setSubmitted(true);
-    }, 1200);
+      setSubmitError("Coś poszło nie tak. Spróbuj ponownie.");
+    }
   };
 
   const next = () => {
@@ -361,6 +399,10 @@ export const HeroForm = () => {
             )}
           </button>
         </div>
+
+        {submitError && (
+          <p className="text-xs text-destructive text-center mt-3">{submitError}</p>
+        )}
 
         <p className="text-xs text-muted-foreground text-center mt-4">
           Bez spamu. Jeśli to nie ma sensu w Twoim przypadku — powiemy wprost.
